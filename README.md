@@ -27,6 +27,7 @@ Users who are signed in are able to visit a Watchlist page, which display all of
 ![image](https://github.com/user-attachments/assets/f2fd196d-86ac-4345-a962-5cb4ae210177)
 ## Create listing page:
  Users are able to visit a page to create a new listing. They are able to specify a title for the listing, a text-based description, and what the starting bid should be. Users should also optionally be able to provide a URL for an image for the listing and/or a category (e.g. Fashion, Public, Office, Home, etc.).
+ ![image](https://github.com/user-attachments/assets/3c4edbab-776c-420d-bfc9-1a1c17451794)
 ## Log in Page
 Helps user to log in
 ![image](https://github.com/user-attachments/assets/4ca2b714-7ce3-4743-afce-4fd90e19dcdf)
