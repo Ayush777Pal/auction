@@ -16,6 +16,7 @@ Clicking on a "Watch" take users to a page specific to that listing. On that pag
     <li>Users are able to add comments to the listing page. The listing page should display all comments that have been made on the listing.</li>
   </ul>
 </ul>
+
 ![image](https://github.com/user-attachments/assets/91be15f6-7650-4f9e-b70e-1471b220dbb0)
 ![image](https://github.com/user-attachments/assets/ef3d3747-25b3-49e1-8675-a5dca76e0744)
 ![image](https://github.com/user-attachments/assets/fdf841f6-5807-4b1a-a0c6-1a3af7fa6f87)
