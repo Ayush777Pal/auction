@@ -1,0 +1,86 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+<div class="content3">
+        {% if update %}
+                <div class="alert alert-success" role="alert">
+                {{message}}
+                </div>
+                {% else %}
+                <div class="alert alert-danger" role="alert">
+                {{message}}
+        </div>
+        {% endif %}
+
+        <div class="row">
+            {% if user.is_authenticated%}
+                    {% if objectwatch%}
+                    <form action="{% url 'removewatch' id=object.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger" style="margin-left:20px;">Remove from watchlist</button>
+                    </form>
+                    {% else %}
+                    <form action="{% url 'addwatch' id=object.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success" style="margin-left:20px;">Add from watchlist</button>
+                    </form>
+                    {% endif %}
+            {% endif %}
+            {% if user.is_authenticated%}
+                    {% if isowner %}
+                    <form action="{% url 'closeAuction' id=object.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger" style="margin-left:20px;">Close Auctions</button>
+                    </form> 
+                    {% endif %}
+            {% endif %}
+
+        </div>
+        <h3>MAGIC: {{object.title}}</h3>
+    <div class="card nx-3 boxed" style="width: 18rem; margin-right:20px; margin-left:20px margin-bottom:30px;">
+        <img class="card-img-top" src="{{object.imageurl}}" alt="Card image cap" style="width:286px; height:284px;">
+        <div class="card-body">
+        <h5 class="card-title">{{object.title}}</h5>
+        <p class="card-text">{{object.discription}}</p>
+        <a href="#" class="btn btn-primary">Current Bid is {{object.price}}</a>
+        </div> 
+    </div>
+        {% if user.is_authenticated%}
+        
+        <h3 style="margin-top:30px;">Bid</h3>
+        <form action="{% url 'addBid' id=object.id %}" method="POST" class="form-inline">
+        {% csrf_token %}
+        <div class="form-group">
+        <label style="margin-right:10px; font-size:1.2rem;">Add Bid</label>
+        <input type="number" min="0" name="newBid" placeholder="Add New Bid" class="form-control">
+        <button type="submit" class="btn btn-warning">Add</button>
+        </div>
+        </div>
+        </form>
+        {%endif%}
+        <div style="margin-top:30px;">
+            <h3>Details</h3>
+            <ul>
+                <li>Listed by: {{object.owner}}</li>
+                <li>House material: {{object.house}}</li>
+            </ul>
+        </div>
+                            <div>
+        {% if user.is_authenticated %}
+        <h3>Add Comment </h3>
+        <form class="form-inline" action="{% url 'comment' id=object.id %}" method="POST">
+            {% csrf_token %}
+            <input type="text" class="form-control" placeholder="Enter Comment" style="width:60%;" name="coment">
+            <button class="btn btn-warning" type="submit">Add</button>
+        </form>
+        {% endif %}
+        </div>
+        <div>
+            <h3>Comment</h3>
+            <ul class="list-group" style="color:black;">
+                {% for co in com %}
+                <li class="list-group-item">{{co.author}} has comented {{co.comment}}</li>  
+                {% endfor %}
+            </ul>
+        </div>
+</div>
+{% endblock%}

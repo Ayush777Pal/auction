@@ -1,0 +1,17 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+{% if user.is_authenticated %}
+<div class="row nx-3">
+  {%for cat in category%}
+  <div class="card nx-3 boxed" style="width: 18rem; margin-right:20px; margin-left:20px">
+    <img class="card-img-top" src="{{cat.imageurl}}" alt="Card image cap" style="width:286px; height:284px;">
+    <div class="card-body">
+      <h5 class="card-title">{{cat.title}}</h5>
+      <p class="card-text">{{cat.discription}}</p>
+      <a href="{% url 'watch' id=cat.id %}" class="btn btn-primary">Watch</a>
+    </div> 
+  </div>
+  {% endfor %}
+<div>
+{% endif %}
+{% endblock body %} 

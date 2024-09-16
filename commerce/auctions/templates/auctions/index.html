@@ -1,0 +1,31 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div style="display:inline-flex; margin-top:20px;">
+    <h2 class="subhead">Active Listings</h2>
+    <div style="padding-top:2px; float:right; width:45vh; height:30px;">
+    <form action="{% url 'catji'%}" method='POST'>
+      {% csrf_token %}
+      <select name="houe" class="form-select form-select-lg mb-3" style="border-radius:5px;">
+      <option selected>Open this select menu</option>
+        {% for ca in home %}
+        <option value={{ca}}> {{ca}}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="btn btn-primary but">Filter</button>
+    </form>
+    </div>
+    </div>
+    <div class="row nx-3 container">
+        {%for cat in category%}
+        <div class="card nx-3 boxed">
+          <img class="card-img-top" src="{{cat.imageurl}}" alt="Card image cap" style="width:286px; height:284px;">
+          <div class="card-body">
+            <h5 class="card-title">{{cat.title}}</h5>
+            <p class="card-text">{{cat.discription}}</p>
+          </div> 
+          <a href="{% url 'watch' id=cat.id %}" class="btn btn-primary">Watch</a>
+        </div>
+        {% endfor %}
+      <div> 
+{% endblock %}
